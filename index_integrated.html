@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pelimoviesApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>pelimovies</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css">
+    <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
+</head>
+
+<body ng-controller="searchController">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                </button>
+                <a class="navbar-brand" href="#">Pelimovies Angular: {{2+2}}</a>
+            </div>
+    </nav>
+    <div class="container">
+        <h2 class="text-center">Search</h2>
+        <div class="jumbotron">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-xs-12"></label>
+                    <div class="col-xs-12">
+                        <input ng-model="movieQuery" type="text" class="form-control" id="inputEmail" placeholder="Write Movie..." style="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button ng-click="searchMovie()" type="submit" class="btn btn-primary">Search Movie</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="jumbotron">
+            <h2 class="text-center">Movies</h2>
+            <div class="col-xs-12">
+            <select ng-model="movieSelected" ng-change="movieSelection()">
+                <option ng-repeat="movie in movies" value="{{movie.id}}"> {{movie.id}}: {{movie.title}}</option>
+            </select>
+            </div>
+            </div>
+
+        <script type="text/javascript">
+
+        angular.module("pelimoviesApp", [])
+        .controller("searchController", function($scope, $http) {
+
+        var api_key = '201cdf0b3213bde3307da905afb0f471'
+
+
+            $scope.searchMovie = function() {
+                var urlSearchMovie = 'https://api.themoviedb.org/3/search/movie?api_key=' + api_key + '&query=' + $scope.movieQuery
+                console.log(urlSearchMovie)
+                return $http.get(urlSearchMovie)
+                $http.get(urlSearchMovie)
+                    .then(function(response) {
+                        $scope.movies = response.data.results
+                        console.log($scope.movies)
+                    })
+            }
+            $scope.movieSelection = function() {
+                var idMovie = $scope.movieSelected
+                console.log(idMovie)
+            }
+        })
+        </script>
+</body>
+
+</html>

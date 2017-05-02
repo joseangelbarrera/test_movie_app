@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='pelimoviesApp'>
+
+<head>
+    <meta charset="UTF-8">
+    <title>pelimovies</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css
+">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div>
+            <div class="navbar-header">
+                </button>
+                <a class="navbar-brand" href="#">Pelimovies Angular: {{2+2}}</a>
+            </div>
+    </nav>
+    <div class="container" ng-controller="searchController">
+        <h2 class="text-center">Search</h2>
+        <div class="jumbotron">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label></label>
+                    <div class="col-xs-12">
+                        <input ng-model="movieQuery" class="form-control" id="inputEmail" placeholder="Write Movie...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <button ng-click="searchMovie()" type="submit" class="btn btn-primary">Search Movie</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+<!--         <div ng-controller="movieController">
+            <select ng-model="movieSelected" ng-change="movieSelection()">
+                <option ng-repeat "" ng-repeat="movie in movies" value="{{movie.id}}">{{movie.name}}</option>
+            </select>
+        </div> -->
+        <script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controllers/searchController.js"></script>
+ <!--  <script type="text/javascript" src="js/controllers/movieController.js"></script>
+ -->
+        <script type="text/javascript" src="js/services/moviesService.js"></script>
+</body>
+</div>
+
+</html>
